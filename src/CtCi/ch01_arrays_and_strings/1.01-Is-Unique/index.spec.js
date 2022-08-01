@@ -1,5 +1,5 @@
 import assert from "assert";
-import isUnique from "./index.js";
+import { isUnique, isUniqueWithDataStructure } from "./index.js";
 
 const data = [
   ["abcd", true],
@@ -12,7 +12,7 @@ describe("중복이 없는가", function () {
   describe("기본적인 풀이", function () {
     data.forEach((datum) => {
       it(`${datum[0]}는 ${datum[1]}이여야 함`, function () {
-        assert.equal(isUnique(datum[0]), datum[1]);
+        assert.equal(isUniqueWithDataStructure(datum[0]), datum[1]);
       });
     });
   });
