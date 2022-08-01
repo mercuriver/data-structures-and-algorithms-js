@@ -1,4 +1,4 @@
-import Graph from "./util/Graph.js";
+import Graph from "../util/Graph.js";
 
 describe("Class 테스트", function () {
   describe("Graph 초기화", function () {
