@@ -1,11 +1,17 @@
+/**
+ * 시간복잡도: O(N)
+ * 공간복잡도: O(N)
+ */
 const isUniqueSimple = (value) => {
   const chars = new Set([...value]);
   return chars.size === value.length;
 };
 
 /**
- * 시간복잡도: O(n)
- * 공간복잡도: O(n)
+ * 자료 구조를 사용한 방식
+ *
+ * 시간복잡도: O(N)
+ * 공간복잡도: O(N)
  */
 const isUniqueWithDataStructure = (value) => {
   const chars = new Set();
@@ -21,8 +27,22 @@ const isUniqueWithDataStructure = (value) => {
   return true;
 };
 
+/**
+ * 별도의 자료구조를 사용하지 않는 방식
+ *
+ * 시간복잡도: O(N log N)
+ * 공간복잡도: O(N)
+ */
 const isUnique = (value) => {
-  return false;
+  const charArray = [...value].sort();
+  const { length } = charArray;
+
+  for (let i = 0; i < length - 1; i++) {
+    if (charArray[i] === charArray[i + 1]) {
+      return false;
+    }
+  }
+  return true;
 };
 
 export { isUniqueSimple, isUniqueWithDataStructure, isUnique };
