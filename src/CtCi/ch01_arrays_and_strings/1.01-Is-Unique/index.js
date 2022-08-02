@@ -2,7 +2,7 @@
  * 시간복잡도: O(N)
  * 공간복잡도: O(N)
  */
-const isUniqueSimple = (value) => {
+const isUnique_1 = (value) => {
   const chars = new Set([...value]);
   return chars.size === value.length;
 };
@@ -13,7 +13,7 @@ const isUniqueSimple = (value) => {
  * 시간복잡도: O(N)
  * 공간복잡도: O(N)
  */
-const isUniqueWithDataStructure = (value) => {
+const isUnique_2 = (value) => {
   const chars = new Set();
   const { length } = value;
 
@@ -30,10 +30,10 @@ const isUniqueWithDataStructure = (value) => {
 /**
  * 별도의 자료구조를 사용하지 않는 방식
  *
- * 시간복잡도: O(N log N)
+ * 시간복잡도: O(N log N), Quick sort의 시간 복잡도
  * 공간복잡도: O(N)
  */
-const isUnique = (value) => {
+const isUniqueWithoutDataStructure_1 = (value) => {
   const charArray = [...value].sort();
   const { length } = charArray;
 
@@ -45,4 +45,7 @@ const isUnique = (value) => {
   return true;
 };
 
-export { isUniqueSimple, isUniqueWithDataStructure, isUnique };
+export {
+  isUnique_2 as isUnique,
+  isUniqueWithoutDataStructure_1 as isUniqueWithoutDataStructure,
+};
