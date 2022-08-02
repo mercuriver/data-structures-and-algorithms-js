@@ -1,5 +1,6 @@
 import assert from "assert";
 import palindromePermutation from "./index.js";
+import { stringToCharArray } from "../utils/index.js";
 
 const data = [
   ["Tact Coa", true],
@@ -13,7 +14,10 @@ const data = [
 describe("회문 순열", function () {
   data.forEach((datum) => {
     it(`"${datum[0]}"의 회문 순열 여부는 [${datum[1]}]`, function () {
-      assert.equal(palindromePermutation(datum[0]), datum[1]);
+      assert.equal(
+        palindromePermutation(stringToCharArray(datum[0])),
+        datum[1]
+      );
     });
   });
 });
