@@ -1,1 +1,4 @@
-export const stringToCharArray = (value) => typeof value === 'string'? [...value] : value;
+const stringToCharArray = (value) =>
+  typeof value === "string" ? [...value] : value;
+
+export { stringToCharArray };
