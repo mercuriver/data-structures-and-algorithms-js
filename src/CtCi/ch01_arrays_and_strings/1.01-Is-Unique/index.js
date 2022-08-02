@@ -3,7 +3,7 @@
  * 공간복잡도: O(N)
  */
 const isUnique_1 = (value) => {
-  const chars = new Set([...value]);
+  const chars = new Set(value);
   return chars.size === value.length;
 };
 
@@ -15,10 +15,8 @@ const isUnique_1 = (value) => {
  */
 const isUnique_2 = (value) => {
   const chars = new Set();
-  const { length } = value;
 
-  for (let i = 0; i < length; i++) {
-    const char = value[i];
+  for (const char of value) {
     if (chars.has(char)) {
       return false;
     }
@@ -34,13 +32,14 @@ const isUnique_2 = (value) => {
  * 공간복잡도: O(N)
  */
 const isUniqueWithoutDataStructure_1 = (value) => {
-  const charArray = [...value].sort();
-  const { length } = charArray;
+  value.sort();
 
-  for (let i = 0; i < length - 1; i++) {
-    if (charArray[i] === charArray[i + 1]) {
+  let prev = undefined;
+  for (const char of value) {
+    if (prev === char) {
       return false;
     }
+    prev = char;
   }
   return true;
 };
