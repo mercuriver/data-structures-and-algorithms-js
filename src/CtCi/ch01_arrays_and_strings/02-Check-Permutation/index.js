@@ -1,5 +1,16 @@
+const isWrongStringLength = (firstValue, secondValue) => {
+  return firstValue.length === 0 || firstValue.length !== secondValue.length;
+};
+
+/**
+ * 자료 구조를 사용한 방식
+ *
+ * N: firstValue.length, M: secondValue.length
+ * 시간복잡도: O(N+M)
+ * 공간복잡도: O(N)
+ */
 const checkPermute = (firstValue, secondValue) => {
-  if (firstValue.length === 0 || firstValue.length !== secondValue.length) {
+  if (isWrongStringLength(firstValue, secondValue)) {
     return false;
   }
 
@@ -29,4 +40,22 @@ const checkPermute = (firstValue, secondValue) => {
   return charMap.size === 0;
 };
 
-export default checkPermute;
+/**
+ * 정렬을 활용한 방식
+ *
+ * N: firstValue.length, M: secondValue.length
+ * 시간복잡도: O(N log N + M log M)
+ * 공간복잡도: O(N + M)
+ */
+const checkPermuteBySort = (firstValue, secondValue) => {
+  if (isWrongStringLength(firstValue, secondValue)) {
+    return false;
+  }
+
+  firstValue.sort();
+  secondValue.sort();
+
+  return firstValue.every((char, i) => char === secondValue[i]);
+};
+
+export { checkPermute, checkPermuteBySort };
