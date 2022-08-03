@@ -4,11 +4,11 @@ import { stringToCharArray } from "../utils/index.js";
 
 const data = [
   ["Tact Coa", true],
-  ["mercuriver", false],
-  ["reri curi vercu", true],
-  ["acb", false],
-  ["acb acb", false],
+  ["acb acb", true],
   ["acb ac", true],
+  ["reri curi vercu", true],
+  ["mercuriver", false],
+  ["acb", false],
 ];
 
 describe("회문 순열", function () {

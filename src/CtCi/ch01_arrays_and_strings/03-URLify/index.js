@@ -2,7 +2,12 @@ import { toString } from "../utils/index.js";
 
 const REPLACE_TARGET = " ";
 
-// 가급적 범용적인 문자열 처리 방식으로 구현
+/**
+ * 범용적인(타언어) 문자열 처리 방식으로 구현
+ *
+ * 시간복잡도: O(N)
+ * 공간복잡도: O(N)
+ */
 const urlify = (value, _) => {
   const spaceCount = value.reduce(
     (count, char) => (char === REPLACE_TARGET ? count + 1 : count),
