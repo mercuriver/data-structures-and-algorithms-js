@@ -1,4 +1,6 @@
 const stringToCharArray = (value) =>
   typeof value === "string" ? [...value] : value;
 
-export { stringToCharArray };
+const toString = (array) => array.join("");
+
+export { stringToCharArray, toString };

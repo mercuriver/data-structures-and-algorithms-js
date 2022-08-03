@@ -1,21 +1,22 @@
 import assert from "assert";
-import urlify from "./index.js";
+import { urlify } from "./index.js";
 import { stringToCharArray } from "../utils/index.js";
 
 /**
- * Todo: 확인 사항
- * 앞, 뒤 여백은 trim해야하는가, %20로 치환해야 하는가
- * 1회 이상 반복되는 space는 하나의 여백으로 치환해야 하는가
+ * 작업 기준:
+ * 앞, 뒤로 붙은 ' '(space)는 trim하지 않음
+ * ' '(space)와 '%20' 1:1로 치환
  */
 const data = [
   ["Mr John Smith", 13, "Mr%20John%20Smith"],
-  ["Mr John Smith    ", 13, "Mr%20John%20Smith"],
-  ["    Mr John Smith", 13, "Mr%20John%20Smith"],
-  ["    Mr John Smith    ", 13, "Mr%20John%20Smith"],
-  ["Mr    John    Smith", 13, "Mr%20John%20Smith"],
-  [" M e r c u r i v e r ", 19, "M%20e%20r%20c%20u%20r%20i%20v%20e%20r"],
+  ["mercuriver", 10, "mercuriver"],
+  ["Mr John Smith    ", 13, "Mr%20John%20Smith%20%20%20%20"],
+  ["    Mr John Smith", 13, "%20%20%20%20Mr%20John%20Smith"],
+  ["    Mr John Smith    ", 13, "%20%20%20%20Mr%20John%20Smith%20%20%20%20"],
+  ["Mr    John    Smith", 13, "Mr%20%20%20%20John%20%20%20%20Smith"],
+  [" M e r c u r i v e r ", 19, "%20M%20e%20r%20c%20u%20r%20i%20v%20e%20r%20"],
   ["", 0, ""],
-  ["     ", 0, ""],
+  ["     ", 0, "%20%20%20%20%20"],
 ];
 
 describe("URL화", function () {
