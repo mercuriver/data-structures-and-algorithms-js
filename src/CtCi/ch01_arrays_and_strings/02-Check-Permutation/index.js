@@ -13,6 +13,14 @@ const checkPermute = (firstValue, secondValue) => {
 
   console.log([...charMap]);
 
+  for (const char of secondValue) {
+    if (charMap.has(char) && charMap.get(char) > 0) {
+      charMap.set(char, charMap.get(char) - 1);
+    } else {
+      return false;
+    }
+  }
+
   return false;
 };
 
