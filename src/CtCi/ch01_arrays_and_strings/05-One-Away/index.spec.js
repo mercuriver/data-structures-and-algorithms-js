@@ -4,10 +4,12 @@ import { stringToCharArray } from "../utils/index.js";
 
 const data = [
   ["pale", "ple", true],
-  ["pales", "pale", true],
+  ["pale", "pales", true],
   ["pale", "bale", true],
-  ["pale", "bake", false],
   ["mercuriver", "Mercuriver", true],
+  ["pale", "al", false],
+  ["pale", "spales", false],
+  ["pale", "bake", false],
   ["mercuriver", "Mercuryver", false],
 ];
 
