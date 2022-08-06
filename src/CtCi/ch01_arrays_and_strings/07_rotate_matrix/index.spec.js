@@ -50,7 +50,7 @@ describe("행렬 회전", () => {
 
   data.forEach((datum) => {
     it(`rotateMatrix("${datum[0]}") => "${datum[1]}"`, () => {
-      assert.equal(rotateMatrix(datum[0]), datum[1]);
+      assert.equal(rotateMatrix(datum[0]).join(","), datum[1].join(","));
     });
   });
 });
