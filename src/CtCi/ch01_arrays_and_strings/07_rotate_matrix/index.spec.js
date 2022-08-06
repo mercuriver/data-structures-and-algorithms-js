@@ -6,12 +6,9 @@ import rotateMatrix, {
 
 const invalidData = [null, undefined, []];
 const unfitMatrixData = [
-  [["10"], ["1"]],
-  [["00", "10"], ["10"]],
-  [
-    ["00", "000", "100"],
-    ["100", "000", "000"],
-  ],
+  ["", "1"],
+  ["10", "1"],
+  ["00", "000", "100"],
 ];
 const data = [
   [["1"], ["1"]],
