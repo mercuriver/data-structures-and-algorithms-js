@@ -3,7 +3,6 @@ import rotateMatrix, {
   ERROR_CODE_INVALID_MATRIX,
   ERROR_CODE_UNFIT_MATRIX,
 } from "./index.js";
-import { stringToCharArray } from "../utils/index.js";
 
 const invalidData = [null, undefined, []];
 const unfitMatrixData = [
@@ -29,28 +28,28 @@ const data = [
     ["1000", "0000", "0000", "0000"],
   ],
 ];
-describe("행렬 회전", function () {
+
+// assert가 chai.assert가 아닌 node.assert인 것에 주의
+describe("행렬 회전", () => {
   invalidData.forEach((datum) => {
     it("값이 [ null | undefined | empty ] 일 경우 에러 발생", () =>
       assert.throws(
         () => {
           rotateMatrix(datum);
         },
-        Error,
-        ERROR_CODE_INVALID_MATRIX
+        (error) => error.message === ERROR_CODE_INVALID_MATRIX
       ));
   });
 
-  //   unfitMatrixData.forEach((datum) => {
-  //     it(`유효하지 않은 행렬 ${datum}`, () =>
-  //       assert.throws(
-  //         () => {
-  //           rotateMatrix(datum);
-  //         },
-  //         Error,
-  //         ERROR_CODE_UNFIT_MATRIX
-  //       ));
-  //   });
+  unfitMatrixData.forEach((datum) => {
+    it(`유효하지 않은 행렬 ${datum}`, () =>
+      assert.throws(
+        () => {
+          rotateMatrix(datum);
+        },
+        (error) => error.message === ERROR_CODE_UNFIT_MATRIX
+      ));
+  });
 
   data.forEach((datum) => {
     it(`rotateMatrix("${datum[0]}") => "${datum[1]}"`, () => {
