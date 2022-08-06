@@ -9,11 +9,7 @@ const rotateMatrix = (matrix) => {
     throw new Error(ERROR_CODE_INVALID_MATRIX);
   }
 
-  if (
-    !matrix.every((column) => {
-      return column.length === length;
-    })
-  ) {
+  if (!matrix.every((column) => column.length === length)) {
     throw new Error(ERROR_CODE_UNFIT_MATRIX);
   }
 
