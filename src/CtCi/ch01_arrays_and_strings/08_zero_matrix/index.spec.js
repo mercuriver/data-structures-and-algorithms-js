@@ -66,7 +66,7 @@ describe("0 행렬", () => {
 
   data.forEach((datum) => {
     it(`zeroMatrix("${datum[0]}") => "${datum[1]}"`, () => {
-      assert.equal(zeroMatrix(datum[0]), datum[1]);
+      assert.equal(zeroMatrix(datum[0]).join(","), datum[1].join(","));
     });
   });
 });
