@@ -1,7 +1,4 @@
-import { toString, stringToCharArray } from "../utils/index.js";
-
-export const ERROR_CODE_INVALID_MATRIX = "Invalid matrix";
-export const ERROR_CODE_UNFIT_MATRIX = "Unfit matrix";
+import { toString, stringToCharArray, validateMatrix } from "../utils/index.js";
 
 const MASK_SYMBOL = "0";
 const NORMAL_SYMBOL = "1";
@@ -9,13 +6,7 @@ const NORMAL_SYMBOL = "1";
 const zeroMatrix = (matrix) => {
   const { length } = matrix || { length: 0 };
 
-  if (!matrix || length <= 0) {
-    throw new Error(ERROR_CODE_INVALID_MATRIX);
-  }
-
-  if (!matrix.every((column) => column.length === length)) {
-    throw new Error(ERROR_CODE_UNFIT_MATRIX);
-  }
+  validateMatrix(matrix);
 
   if (length === 1) {
     return matrix;
