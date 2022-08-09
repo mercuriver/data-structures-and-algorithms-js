@@ -5,13 +5,13 @@ const createNode = (node, next) => ({
 
 const arrayToLinkedList = (arrayValue) => {
   const { length } = arrayValue || { length: 0 };
-  const linkedList = null;
+  let linkedList = null;
 
   if (length <= 0) {
     return linkedList;
   }
 
-  for (const unit of arrayValue) {
+  for (const unit of arrayValue.reverse()) {
     linkedList = createNode(unit, linkedList);
   }
 
