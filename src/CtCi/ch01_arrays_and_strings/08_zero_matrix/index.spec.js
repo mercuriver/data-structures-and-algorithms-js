@@ -1,8 +1,9 @@
 import assert from "assert";
-import zeroMatrix, {
+import zeroMatrix from "./index.js";
+import {
   ERROR_CODE_INVALID_MATRIX,
-  ERROR_CODE_UNFIT_MATRIX,
-} from "./index.js";
+  ERROR_CODE_NON_RECTANGULAR_MATRIX,
+} from "../utils/index.js";
 
 const invalidData = [null, undefined, []];
 const unfitMatrixData = [
@@ -60,7 +61,7 @@ describe("0 행렬", () => {
         () => {
           zeroMatrix(datum);
         },
-        (error) => error.message === ERROR_CODE_UNFIT_MATRIX
+        (error) => error.message === ERROR_CODE_NON_RECTANGULAR_MATRIX
       ));
   });
 

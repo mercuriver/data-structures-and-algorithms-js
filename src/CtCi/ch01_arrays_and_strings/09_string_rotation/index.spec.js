@@ -1,6 +1,5 @@
 import assert from "assert";
 import stringRotation from "./index.js";
-import { stringToCharArray } from "../utils/index.js";
 
 const data = [
   ["waterbottle", "bottlewater", true],

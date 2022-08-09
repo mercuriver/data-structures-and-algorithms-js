@@ -1,8 +1,10 @@
 import assert from "assert";
-import rotateMatrix, {
+import rotateMatrix from "./index.js";
+
+import {
   ERROR_CODE_INVALID_MATRIX,
-  ERROR_CODE_UNFIT_MATRIX,
-} from "./index.js";
+  ERROR_CODE_NON_RECTANGULAR_MATRIX,
+} from "../utils/index.js";
 
 const invalidData = [null, undefined, []];
 const unfitMatrixData = [
@@ -44,7 +46,7 @@ describe("행렬 회전", () => {
         () => {
           rotateMatrix(datum);
         },
-        (error) => error.message === ERROR_CODE_UNFIT_MATRIX
+        (error) => error.message === ERROR_CODE_NON_RECTANGULAR_MATRIX
       ));
   });
 
