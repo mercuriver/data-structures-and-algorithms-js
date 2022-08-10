@@ -15,7 +15,10 @@ class LinkedList {
       this.#head = node;
       this.#tail = node;
     } else {
-      this.#tail.next(node);
+      console.log("### append", node.value, node.next);
+      if (this.#tail !== undefined) {
+        this.#tail.next(node);
+      }
       this.#tail = node;
     }
   }
