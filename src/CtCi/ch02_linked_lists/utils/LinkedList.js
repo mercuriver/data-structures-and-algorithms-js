@@ -25,6 +25,33 @@ class LinkedList {
     node.next(this.#head);
     this.#head = node;
   }
+
+  pop() {
+    const current = this.#head;
+
+    if (!current) return null;
+    if (!current.next) {
+      this.#head = null;
+      return current;
+    }
+
+    while (current.next.next) {
+      current = current.next;
+    }
+
+    const last = this.#tail;
+    this.#tail = current;
+    this.#tail.next = null;
+    return last;
+  }
+
+  get head() {
+    return this.#head;
+  }
+
+  get tail() {
+    return this.#tail;
+  }
 }
 
 export default LinkedList;
