@@ -4,8 +4,8 @@ class LinkedList {
   #head;
   #tail;
   constructor() {
-    this.#head = null;
-    this.#tail = null;
+    this.#head = undefined;
+    this.#tail = undefined;
   }
 
   append(value) {
