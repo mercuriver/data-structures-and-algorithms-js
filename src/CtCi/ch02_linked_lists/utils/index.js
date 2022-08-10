@@ -1,4 +1,5 @@
 export * from "./Node.js";
+export * from "./LinkedList.js";
 
 const createNode = (node, next) => ({
   node,
