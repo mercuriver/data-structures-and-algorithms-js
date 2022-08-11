@@ -1,10 +1,13 @@
-import assert from "assert";
+import { expect } from "chai";
 import { arrayToLinkedList } from "./index.js";
 
 const data = [
   {
     list: [1],
-    expect: [],
+    expect: {
+      node: 1,
+      next: null,
+    },
   },
   {
     list: [1, 2, 3, 4],
@@ -31,7 +34,7 @@ const data = [
 describe("arrayToLinkedList 테스트", function () {
   data.forEach((datum) => {
     it(`${datum.list}의 연결 리스트 데이터: ${datum.expect}`, function () {
-      assert.equal(arrayToLinkedList(datum.list), datum.expect);
+      expect(arrayToLinkedList(datum.list)).to.eql(datum.expect); // passes
     });
   });
 });
