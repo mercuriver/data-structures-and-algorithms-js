@@ -52,6 +52,16 @@ class LinkedList {
   get tail() {
     return this.#tail;
   }
+
+  toArray() {
+    const result = [];
+    let current = this.#head;
+    while (current) {
+      result.push(current.value);
+      current = current.next;
+    }
+    return result;
+  }
 }
 
 export default LinkedList;
