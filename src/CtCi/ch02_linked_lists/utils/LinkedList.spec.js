@@ -1,4 +1,4 @@
-import assert from "assert";
+import { expect } from "chai";
 import LinkedList from "./LinkedList.js";
 
 const listArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
@@ -11,6 +11,6 @@ describe("LinkedList class 테스트", function () {
       list.append(unit);
     }
 
-    console.log(list);
+    expect(listArray).to.eql(list.toArray());
   });
 });
