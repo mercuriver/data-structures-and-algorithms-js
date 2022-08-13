@@ -45,6 +45,17 @@ class LinkedList {
     return last;
   }
 
+  popFirst() {
+    const first = this.#head;
+    if (this.#head && this.#head.next) {
+      this.#head = this.#head.next;
+      first.next = null;
+    } else {
+      this.#head = null;
+    }
+    return first;
+  }
+
   get head() {
     return this.#head;
   }
