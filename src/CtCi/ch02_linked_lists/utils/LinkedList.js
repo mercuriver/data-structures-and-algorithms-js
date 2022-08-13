@@ -45,7 +45,8 @@ class LinkedList {
     return last;
   }
 
-  popFirst() {
+  // popFirst
+  shift() {
     const first = this.#head;
     if (this.#head && this.#head.next) {
       this.#head = this.#head.next;
