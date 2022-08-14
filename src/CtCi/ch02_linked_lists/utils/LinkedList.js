@@ -22,10 +22,12 @@ class LinkedList {
       this.#tail.next = node;
       this.#tail = node;
     }
+    return this;
   }
 
   prepend(value) {
     this.#head = new Node(value, this.#head);
+    return this;
   }
 
   pop() {
@@ -71,7 +73,7 @@ class LinkedList {
         } else {
           prev.next = current.next;
           current.next = null;
-          return current.value;
+          return true;
         }
       } else {
         prev = current;
@@ -79,7 +81,7 @@ class LinkedList {
         i++;
       }
     }
-    return null;
+    return false;
   }
 
   insertAt(index, value) {

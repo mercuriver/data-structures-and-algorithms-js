@@ -18,8 +18,8 @@ describe("LinkedList class 테스트", function () {
     expect(new LinkedList().toArray()).to.eql([]);
   });
 
-  it(`removeAt(2), 삭제 반환값 3`, function () {
-    expect(list.removeAt(2)).to.equal(3);
+  it(`removeAt() 테스트`, function () {
+    expect(list.removeAt(2)).be.true;
     expect(list.toArray()).to.eql([1, 2, 4]);
   });
 
@@ -42,10 +42,29 @@ describe("LinkedList class 테스트", function () {
     expect(list.toArray()).to.eql([3, 4]);
   });
 
-  it(`연속 prepend() 테스트`, function () {
+  it(`prepend() 테스트`, function () {
     list.prepend(2);
     list.prepend(1);
     list.prepend(0);
     expect(list.toArray()).to.eql([0, 1, 2, 3, 4]);
+  });
+
+  it(`append() 테스트`, function () {
+    list.append(5);
+    list.append(6);
+    list.append(7);
+    expect(list.toArray()).to.eql([0, 1, 2, 3, 4, 5, 6, 7]);
+  });
+
+  it(`prepend() 체이닝 테스트`, function () {
+    list.prepend(-1).prepend(-2).prepend(-3);
+    expect(list.toArray()).to.eql([-3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7]);
+  });
+
+  it(`append() 체이닝 테스트`, function () {
+    list.append(8).append(9).append(10);
+    expect(list.toArray()).to.eql([
+      -3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
+    ]);
   });
 });
