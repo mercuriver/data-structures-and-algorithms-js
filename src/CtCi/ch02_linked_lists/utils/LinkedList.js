@@ -106,11 +106,12 @@ class LinkedList {
   }
 
   #toList(value) {
-    const source = Array.isArray(value) ? [...value] : [value];
-
+    const source = Array.isArray(value) ? value : [value];
+    const { length } = source;
     let current = null;
-    for (const unit of source.reverse()) {
-      current = new Node(unit, current);
+
+    for (let i = length - 1; i >= 0; i--) {
+      current = new Node(source[i], current);
       if (current.next === null) {
         this.#tail = current;
       }
