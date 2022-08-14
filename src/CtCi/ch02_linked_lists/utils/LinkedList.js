@@ -25,7 +25,7 @@ class LinkedList {
   }
 
   pop() {
-    const current = this.#head;
+    let current = this.#head;
 
     if (!current) return null;
     if (!current.next) {
@@ -40,7 +40,7 @@ class LinkedList {
     const last = this.#tail;
     this.#tail = current;
     this.#tail.next = null;
-    return last;
+    return last.value;
   }
 
   // popFirst
@@ -52,7 +52,7 @@ class LinkedList {
     } else {
       this.#head = null;
     }
-    return first;
+    return first.value;
   }
 
   removeAt(index) {
@@ -80,7 +80,8 @@ class LinkedList {
 
   insertAt(index, value) {
     if (index === 0) {
-      return this.prepend(value);
+      this.prepend(value);
+      return true;
     }
 
     let current = this.#head;
