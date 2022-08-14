@@ -1,5 +1,6 @@
-import assert from "assert";
+import { expect } from "chai";
 import removeDuplicates from "./index.js";
+import { LinkedList } from "../utils/index.js";
 
 const data = [
   {
@@ -31,7 +32,9 @@ const data = [
 describe("중복 없애기", function () {
   data.forEach((datum) => {
     it(`${datum.list} 중복 제거 후의 값: ${datum.expect}`, function () {
-      assert.equal(removeDuplicates(datum.list), datum.expect);
+      expect(removeDuplicates(new LinkedList(datum.list)).toArray()).to.eql(
+        datum.expect
+      );
     });
   });
 });
