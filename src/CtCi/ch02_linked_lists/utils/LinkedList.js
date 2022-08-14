@@ -3,9 +3,13 @@ import Node from "./Node.js";
 class LinkedList {
   #head;
   #tail;
-  constructor() {
+  constructor(value) {
     this.#head = undefined;
     this.#tail = undefined;
+
+    if (!!value) {
+      this.#toList(value);
+    }
   }
 
   append(value) {
@@ -99,6 +103,20 @@ class LinkedList {
 
     // Todo: index가 length를 초과할 경우, 마지막에 append 할지 여부 고민
     return false;
+  }
+
+  #toList(value) {
+    const source = Array.isArray(value) ? [...value] : [value];
+
+    let current = null;
+    for (const unit of source.reverse()) {
+      current = new Node(unit, current);
+      if (current.next === null) {
+        this.#tail = current;
+      }
+    }
+
+    this.#head = current;
   }
 
   toArray() {

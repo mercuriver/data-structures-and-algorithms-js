@@ -4,13 +4,18 @@ import LinkedList from "./LinkedList.js";
 const listArray = [1, 2, 3, 4];
 
 describe("LinkedList class 테스트", function () {
-  const list = new LinkedList();
+  const list = new LinkedList(listArray);
 
-  it(`연결 리스트 생성`, function () {
-    for (const unit of listArray) {
-      list.append(unit);
-    }
+  it(`배열을 통한 연결 리스트 생성`, function () {
     expect(list.toArray()).to.eql(listArray);
+  });
+
+  it(`단일 값 통한 연결 리스트 생성`, function () {
+    expect(new LinkedList(1).toArray()).to.eql([1]);
+  });
+
+  it(`인자 없이 연결 리스트 생성`, function () {
+    expect(new LinkedList().toArray()).to.eql([]);
   });
 
   it(`removeAt(2), 삭제 반환값 3`, function () {
