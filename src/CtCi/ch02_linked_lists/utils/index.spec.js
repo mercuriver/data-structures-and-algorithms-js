@@ -33,7 +33,9 @@ const data = [
 
 describe("arrayToLinkedList 테스트", function () {
   data.forEach((datum) => {
-    it(`${datum.list}의 연결 리스트 데이터: ${datum.expect}`, function () {
+    it(`${JSON.stringify(datum.list)}의 연결 리스트 데이터: ${JSON.stringify(
+      datum.expect
+    )}`, function () {
       expect(arrayToLinkedList(datum.list)).to.eql(datum.expect); // passes
     });
   });
