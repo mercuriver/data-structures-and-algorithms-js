@@ -21,9 +21,7 @@ class LinkedList {
   }
 
   prepend(value) {
-    const node = new Node(value);
-    node.next(this.#head);
-    this.#head = node;
+    this.#head = new Node(value, this.#head);
   }
 
   pop() {
