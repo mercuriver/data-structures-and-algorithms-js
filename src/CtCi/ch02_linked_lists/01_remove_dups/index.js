@@ -1,15 +1,17 @@
 const removeDuplicates = (value) => {
   const maskMap = new Set();
   let current = value.head;
+
   maskMap.add(current.value);
 
   while (current.next !== null) {
-    const value = current.next.value;
-    if (maskMap.has(value)) {
-      current.next = current.next.next;
+    const nextNode = current.next;
+
+    if (maskMap.has(nextNode.value)) {
+      current.next = nextNode.next;
     } else {
-      maskMap.add(value);
-      current = current.next;
+      maskMap.add(nextNode.value);
+      current = nextNode;
     }
   }
   return value;
