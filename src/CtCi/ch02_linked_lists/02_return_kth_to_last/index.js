@@ -1,15 +1,35 @@
-// Todo: 포인터를 사용한 처리 방식
-
-// Todo: 재귀를 사용한 처리 방식
-
-// Stack을 사용한 처리 방식
+// 포인터를 사용한 처리 방식
 const findKthToLast = (value, index) => {
-  let current = value.head;
-  const miniStack = [current.value];
-
   if (index < 0) {
     return undefined;
   }
+
+  let target = value.head;
+  let tail = target;
+
+  for (let i = 0; i < index; i++) {
+    if (tail.next === null) {
+      return undefined;
+    }
+    tail = tail.next;
+  }
+
+  while (tail.next !== null) {
+    target = target.next;
+    tail = tail.next;
+  }
+
+  return target.value;
+};
+
+// Stack을 사용한 처리 방식
+const findKthToLast_stack = (value, index) => {
+  if (index < 0) {
+    return undefined;
+  }
+
+  let current = value.head;
+  const miniStack = [current.value];
 
   while (current.next !== null) {
     current = current.next;
