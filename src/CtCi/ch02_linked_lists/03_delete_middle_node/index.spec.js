@@ -54,8 +54,8 @@ describe("중간 노드 삭제", function () {
   data.forEach((datum) => {
     it(`${datum.list} 중 ${datum.target} 노드 제거 후 값: ${datum.expect}`, function () {
       expect(
-        deleteMiddleNode(new LinkedList(datum.list), datum.target)
-      ).to.equal(datum.expect);
+        deleteMiddleNode(new LinkedList(datum.list), datum.target).toArray()
+      ).to.eql(datum.expect);
     });
   });
 });
