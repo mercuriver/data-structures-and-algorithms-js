@@ -1,7 +1,7 @@
 const deleteHeadNode = (list, target) => {
   let prev = list.head;
 
-  while (prev.value === target) {
+  while (prev?.value === target) {
     list.shift();
     prev = list.head;
   }
@@ -14,8 +14,6 @@ const deleteTailNode = (list, target) => {
 };
 
 const deleteMiddleNode = (list, target) => {
-  deleteHeadNode(list, target);
-
   let prev = list.head;
   let current = prev?.next || { next: null };
 
@@ -32,9 +30,15 @@ const deleteMiddleNode = (list, target) => {
     current = current.next;
   }
 
+  return list;
+};
+
+const deleteNode = (list, target) => {
+  deleteHeadNode(list, target);
+  deleteMiddleNode(list, target);
   deleteTailNode(list, target);
 
   return list;
 };
 
-export default deleteMiddleNode;
+export { deleteNode, deleteMiddleNode };
