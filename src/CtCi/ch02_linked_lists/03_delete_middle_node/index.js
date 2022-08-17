@@ -1,18 +1,24 @@
-const deleteMiddleNode = (list, target) => {
+const deleteHeadNode = (list, target) => {
   let prev = list.head;
 
-  console.log("######## start", list.toArray());
-
-  // check head
   while (prev.value === target) {
     list.shift();
     prev = list.head;
   }
+};
+
+const deleteTailNode = (list, target) => {
+  if (list.tail.value === target) {
+    list.pop();
+  }
+};
+
+const deleteMiddleNode = (list, target) => {
+  deleteHeadNode(list, target);
+
+  let prev = list.head;
   let current = prev?.next || { next: null };
 
-  console.log(prev.toString(), current.toString());
-
-  // check middle
   while (current.next !== null) {
     if (current.value === target) {
       if (current.next === null) {
@@ -20,17 +26,13 @@ const deleteMiddleNode = (list, target) => {
       } else {
         current = current.next;
       }
+      prev.next = current;
     }
     prev = current;
     current = current.next;
   }
 
-  // check tail
-  if (current.value === target) {
-    prev.next = null;
-  }
-
-  console.log("######## return", list.toArray());
+  deleteTailNode(list, target);
 
   return list;
 };
