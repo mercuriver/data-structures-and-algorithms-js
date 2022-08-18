@@ -1,5 +1,5 @@
-const solution = () => {
-  return undefined;
+const partition = (list, target) => {
+  return list;
 };
 
-export default solution;
+export default partition;
