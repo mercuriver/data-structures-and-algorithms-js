@@ -135,6 +135,9 @@ class LinkedList {
   get head() {
     return this.#head;
   }
+  set head(node) {
+    this.#head = node;
+  }
 
   get tail() {
     return this.#tail;
