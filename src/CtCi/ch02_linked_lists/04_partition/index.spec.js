@@ -4,9 +4,39 @@ import { LinkedList } from "../utils/index.js";
 
 const data = [
   {
+    list: [],
+    partition: 0,
+    expect: [],
+  },
+  {
+    list: [1],
+    partition: 0,
+    expect: [1],
+  },
+  {
+    list: [1],
+    partition: 1,
+    expect: [1],
+  },
+  {
+    list: [2, 1],
+    partition: 1,
+    expect: [2, 1],
+  },
+  {
+    list: [2, 1],
+    partition: 1,
+    expect: [2, 1],
+  },
+  {
+    list: [2, 1],
+    partition: 2,
+    expect: [1, 2],
+  },
+  {
     list: [3, 5, 8, 5, 10, 2, 1],
     partition: 5,
-    expect: [3, 1, 2, 5, 8, 5, 10],
+    expect: [3, 2, 1, 5, 8, 5, 10],
   },
   {
     list: [10, 9, 8, 7, 6, 5, 4, 3, 2, 1],
