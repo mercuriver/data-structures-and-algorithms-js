@@ -1,22 +1,9 @@
-const sumListJS = (list, isReverse = false) => {
-  const buffer = [];
-
-  let current = list.head;
-
-  while (current !== null) {
-    if (isReverse) {
-      buffer.unshift(current.value);
-    } else {
-      buffer.push(current.value);
-    }
-    current = current.next;
-  }
-
-  return buffer.length <= 0 ? 0 : parseInt(buffer.join(""), 10);
+const sumListForward = (firstList, secondList) => {
+  return firstList;
 };
 
-const sumList = (list, isReverse = false) => {
-  return 0;
+const sumList = (firstList, secondList) => {
+  return firstList;
 };
 
-export default sumList;
+export { sumList, sumListForward };
