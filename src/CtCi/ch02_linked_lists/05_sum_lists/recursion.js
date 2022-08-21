@@ -10,7 +10,7 @@ const phasedSum = (firstNode, secondNode, carry) => {
     return [];
   }
 
-  const currentCarry = sumValue > 10 ? 1 : 0;
+  const currentCarry = sumValue >= 10 ? 1 : 0;
   const currentValue = sumValue % 10;
 
   return [currentValue, ...phasedSum(firstNext, secondNext, currentCarry)];

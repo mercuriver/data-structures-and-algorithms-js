@@ -46,14 +46,14 @@ describe("리스트의 합", function () {
       ).to.eql(datum.expectReverse);
     });
   });
-  // data.forEach((datum) => {
-  //   it(`sumListForward => [${datum.firstList}], [${datum.secondList}]의 합 [${datum.expectForword}]`, function () {
-  //     expect(
-  //       sumListForward(
-  //         new LinkedList(datum.firstList),
-  //         new LinkedList(datum.secondList)
-  //       ).toArray()
-  //     ).to.eql(datum.expectForword);
-  //   });
-  // });
+  data.forEach((datum) => {
+    it(`sumListForward => [${datum.firstList}], [${datum.secondList}]의 합 [${datum.expectForword}]`, function () {
+      expect(
+        sumListForward(
+          new LinkedList(datum.firstList),
+          new LinkedList(datum.secondList)
+        ).toArray()
+      ).to.eql(datum.expectForword);
+    });
+  });
 });

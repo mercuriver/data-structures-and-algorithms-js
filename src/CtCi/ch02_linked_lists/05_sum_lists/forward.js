@@ -46,11 +46,8 @@ const phasedSum = ({ firstNode, firstLength, secondNode, secondLength }) => {
 
   const { carry, value: nextValue } = nextResult;
   const sumValue = firstValue + secondValue + carry;
-  const currentCarry = sumValue > 10 ? 1 : 0;
+  const currentCarry = sumValue >= 10 ? 1 : 0;
   const currentValue = sumValue % 10;
-
-  console.log({ nextResult, firstValue, secondValue });
-  console.log({ sumValue, currentCarry, currentValue });
 
   return {
     carry: currentCarry,
