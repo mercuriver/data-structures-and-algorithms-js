@@ -1,9 +1,11 @@
 class Node {
   #value;
   #next;
+  #uid;
   constructor(value, next = undefined) {
     this.#value = value;
     this.#next = next;
+    this.#uid = Symbol("Unique Node ID");
   }
 
   get value() {
@@ -17,10 +19,15 @@ class Node {
     this.#next = next;
   }
 
+  get uid() {
+    return this.#uid;
+  }
+
   toString() {
     return JSON.stringify({
       value: this.#value,
       next: this.#next?.value || undefined,
+      // uid: this.#uid.toString(),
     });
   }
 }
