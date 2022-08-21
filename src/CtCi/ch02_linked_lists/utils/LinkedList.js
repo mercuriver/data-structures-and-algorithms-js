@@ -142,6 +142,16 @@ class LinkedList {
   get tail() {
     return this.#tail;
   }
+
+  get length() {
+    let count = 0;
+    let current = this.#head;
+    while (current) {
+      count++;
+      current = current.next;
+    }
+    return count;
+  }
 }
 
 export default LinkedList;
