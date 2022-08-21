@@ -39,7 +39,10 @@ describe("리스트의 합", function () {
   data.forEach((datum) => {
     it(`sumList => [${datum.firstList}], [${datum.secondList}]의 합 [${datum.expectReverse}]`, function () {
       expect(
-        sumList(new LinkedList(datum.firstList, datum.secondList)).toArray()
+        sumList(
+          new LinkedList(datum.firstList),
+          new LinkedList(datum.secondList)
+        ).toArray()
       ).to.eql(datum.expectReverse);
     });
   });
@@ -47,7 +50,8 @@ describe("리스트의 합", function () {
   //   it(`sumListForward => [${datum.firstList}], [${datum.secondList}]의 합 [${datum.expectForword}]`, function () {
   //     expect(
   //       sumListForward(
-  //         new LinkedList(datum.firstList, datum.secondList)
+  //         new LinkedList(datum.firstList),
+  //         new LinkedList(datum.secondList)
   //       ).toArray()
   //     ).to.eql(datum.expectForword);
   //   });
