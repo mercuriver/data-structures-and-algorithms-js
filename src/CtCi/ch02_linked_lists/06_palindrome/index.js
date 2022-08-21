@@ -1,5 +1,5 @@
-const solution = () => {
-  return undefined;
+const isPalindrome = (list) => {
+  return false;
 };
 
-export default solution;
+export default isPalindrome;
