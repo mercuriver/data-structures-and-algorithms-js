@@ -2,56 +2,51 @@ import { LinkedList } from "../utils/index.js";
 
 const emptyNode = { value: 0, next: null };
 
-const phasedSum = ({ firstNode, firstLength, secondNode, secondLength }) => {
-  let nextResult;
-  let firstValue = 0;
-  let secondValue = 0;
-  if (firstLength > secondLength) {
-    const { value, next: firstNext } = firstNode || emptyNode;
-    firstValue = value;
-    nextResult = phasedSum({
-      firstNode: firstNext,
-      firstLength: firstLength - 1,
-      secondNode,
-      secondLength,
-    });
-  } else if (secondLength > firstLength) {
-    const { value, next: secondNext } = secondNode || emptyNode;
-    secondValue = value;
-    nextResult = phasedSum({
-      firstNode,
-      firstLength,
-      secondNode: secondNext,
-      secondLength: secondLength - 1,
-    });
-  } else {
-    if (firstLength === 0) {
-      return { carry: 0, value: [] };
-    }
-
-    const nextLength = firstLength - 1;
-    const { value: _firstValue, next: firstNext } = firstNode || emptyNode;
-    const { value: _secondValue, next: secondNext } = secondNode || emptyNode;
-
-    firstValue = _firstValue;
-    secondValue = _secondValue;
-
-    nextResult = phasedSum({
-      firstNode: firstNext,
-      firstLength: nextLength,
-      secondNode: secondNext,
-      secondLength: nextLength,
-    });
+const phasedSum = ({
+  firstNode: currentFirstNode,
+  firstLength: currentFirstLength,
+  secondNode: currentSecondNode,
+  secondLength: currentSecondLength,
+}) => {
+  if (currentFirstLength + currentSecondLength === 0) {
+    return { carry: 0, value: [] };
   }
 
-  const { carry, value: nextValue } = nextResult;
-  const sumValue = firstValue + secondValue + carry;
-  const currentCarry = sumValue >= 10 ? 1 : 0;
-  const currentValue = sumValue % 10;
+  let nextFirstNode = currentFirstNode;
+  let nextFirstLength = currentFirstLength;
+  let nextSecondNode = currentSecondNode;
+  let nextSecondLength = currentSecondLength;
+
+  let firstValue = 0;
+  let secondValue = 0;
+
+  if (currentFirstLength >= currentSecondLength) {
+    const { value, next } = currentFirstNode || emptyNode;
+    firstValue = value;
+    nextFirstNode = next;
+    nextFirstLength = currentFirstLength - 1;
+  }
+  if (currentSecondLength >= currentFirstLength) {
+    const { value, next } = currentSecondNode || emptyNode;
+    secondValue = value;
+    nextSecondNode = next;
+    nextSecondLength = currentSecondLength - 1;
+  }
+
+  const { carry, value } = phasedSum({
+    firstNode: nextFirstNode,
+    firstLength: nextFirstLength,
+    secondNode: nextSecondNode,
+    secondLength: nextSecondLength,
+  });
+
+  const currentSumValue = firstValue + secondValue + carry;
+  const currentCarry = currentSumValue >= 10 ? 1 : 0;
+  const currentValue = currentSumValue % 10;
 
   return {
     carry: currentCarry,
-    value: [currentValue, ...nextValue],
+    value: [currentValue, ...value],
   };
 };
 
