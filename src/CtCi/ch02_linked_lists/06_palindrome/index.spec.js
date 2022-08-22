@@ -1,7 +1,7 @@
 import { expect } from "chai";
 import { stringToCharArray } from "../../ch01_arrays_and_strings/utils/index.js";
 import { LinkedList } from "../utils/index.js";
-import { reverseClone } from "./index.js";
+import { reverseClone, recursion } from "./index.js";
 
 const data = [
   {
@@ -33,6 +33,15 @@ describe("회문", function () {
     }`, function () {
       expect(
         reverseClone(new LinkedList(stringToCharArray(datum.value)))
+      ).to.equal(datum.expect);
+    });
+  });
+  data.forEach((datum) => {
+    it(`[recursion]'${datum.value}'은 회문${
+      datum.expect ? "이다" : "아니다"
+    }`, function () {
+      expect(
+        recursion(new LinkedList(stringToCharArray(datum.value)))
       ).to.equal(datum.expect);
     });
   });
