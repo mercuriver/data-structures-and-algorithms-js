@@ -10,7 +10,7 @@ describe("교집합", function () {
   const secondList = new LinkedList(secondSource);
 
   it(`'${firstList.toString()}','${secondList.toString()} 교집합 요소가 없는 케이스, 반환 값 'undefined'`, function () {
-    expect(intersection(firstList, secondList)).to.be.undefined;
+    expect(isIntersection(firstList, secondList)).to.be.undefined;
   });
 });
 
