@@ -43,7 +43,7 @@ describe("루프 탐색기", function () {
   const list = new LinkedList(source);
   const head = list.head;
   const expectList = [head.next, head.next.next, head.next.next.next];
-  list.head.next = expectList[expectList.length - 1];
+  head.next.next.next.next = head.next;
 
   it(`'${[source[1], source[2], source[3]]}' 부분 반복`, function () {
     expect(nodeArrayStringify(loopDetection(list))).to.be.eql(

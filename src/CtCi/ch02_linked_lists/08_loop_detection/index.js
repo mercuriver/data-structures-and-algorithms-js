@@ -1,11 +1,14 @@
 const pickRange = (startNode, endNode) => {
-  const list = [startNode];
+  const list = [];
   let current = startNode;
-  while (current !== endNode && current.next !== null) {
-    list.push(current.next);
+  while (current !== null) {
+    list.push(current);
+    if (current === endNode) {
+      return list;
+    }
     current = current.next;
   }
-  return list;
+  return [];
 };
 
 const loopDetection = (list) => {
