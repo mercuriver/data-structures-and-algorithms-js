@@ -4,4 +4,12 @@ export { default as LinkedList } from "./LinkedList.js";
 const nodeArrayStringify = (list, ignoreNext = false) =>
   list.map((row) => row.toString(ignoreNext));
 
-export { nodeArrayStringify };
+const skipNode = (node, repeatCount) => {
+  while (repeatCount > 0 && node.next) {
+    repeatCount -= 1;
+    node = node.next;
+  }
+  return node;
+};
+
+export { nodeArrayStringify, skipNode };

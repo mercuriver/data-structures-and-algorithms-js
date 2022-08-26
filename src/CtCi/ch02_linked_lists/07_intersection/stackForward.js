@@ -1,3 +1,5 @@
+import { skipNode } from "../utils/index.js";
+
 const peek = (stack) =>
   stack.length > 0 ? stack[stack.length - 1] : undefined;
 
@@ -13,14 +15,6 @@ const toStack = (list) => {
   }
 
   return { stack, length };
-};
-
-const skipNode = (node, repeatCount) => {
-  while (repeatCount > 0 && node.next) {
-    repeatCount -= 1;
-    node = node.next;
-  }
-  return node;
 };
 
 const isIntersection = (firstList, secondList) => {
