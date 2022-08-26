@@ -23,12 +23,16 @@ class Node {
     return this.#uid;
   }
 
-  toString() {
-    return JSON.stringify({
-      value: this.#value,
-      next: this.#next?.value || undefined,
-      // uid: this.#uid.toString(),
-    });
+  toString(ignoreNext = false) {
+    return ignoreNext
+      ? JSON.stringify({
+          value: this.#value,
+        })
+      : JSON.stringify({
+          value: this.#value,
+          next: this.#next?.value || undefined,
+          // uid: this.#uid.toString(),
+        });
   }
 }
 

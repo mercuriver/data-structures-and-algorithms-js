@@ -6,40 +6,51 @@ const source = ["1-1", "1-2", "1-3", "1-4", "1-5", "1-6"];
 
 describe("루프 탐색기", function () {
   const list = new LinkedList(source);
-
   it(`'${source}' 반복 요소 없음`, function () {
-    expect(nodeArrayStringify(loopDetection(list))).to.be.eql([]);
+    expect(nodeArrayStringify(loopDetection(list), true)).to.be.eql([]);
   });
 });
 
-// describe("루프 탐색기", function () {
-//   const list = new LinkedList(source);
-//   const expectList = new LinkedList(source);
-//   list.tail.next = list.head;
-//   it(`'${source}' 전체 반복`, function () {
-//     expect(nodeArrayStringify(loopDetection(list))).to.be.eql(
-//       nodeArrayStringify(expectList.toArray())
-//     );
-//   });
-// });
+describe("루프 탐색기", function () {
+  const list = new LinkedList(source);
+  list.tail.next = list.head;
 
-// describe("루프 탐색기", function () {
-//   const list = new LinkedList(source);
-//   list.tail.next = list.tail;
-//   it(`'${source}' tail 반복`, function () {
-//     expect(loopDetection(list)).to.be.eql([list.tail]);
-//   });
-// });
+  const expectList = [];
+  let current = new LinkedList(source).head;
+  while (current) {
+    expectList.push(current);
+    current = current.next;
+  }
 
-// describe("루프 탐색기", function () {
-//   const list = new LinkedList(source);
-//   const expectList = [list.next, list.next.next, list.next.next.next];
-//   list.next = list.next.next.next;
+  it(`'${source}' 전체 반복`, function () {
+    expect(nodeArrayStringify(loopDetection(list), true)).to.be.eql(
+      nodeArrayStringify(expectList, true)
+    );
+  });
+});
 
-//   it(`'${source}' tail 반복`, function () {
-//     expect(loopDetection(list)).to.be.eql(expectList);
-//   });
-// });
+describe("루프 탐색기", function () {
+  const list = new LinkedList(source);
+  list.tail.next = list.tail;
+  it(`'${source[source.length - 1]}' tail 반복`, function () {
+    expect(nodeArrayStringify(loopDetection(list))).to.be.eql(
+      nodeArrayStringify([list.tail])
+    );
+  });
+});
+
+describe("루프 탐색기", function () {
+  const list = new LinkedList(source);
+  const head = list.head;
+  const expectList = [head.next, head.next.next, head.next.next.next];
+  list.head.next = expectList[expectList.length - 1];
+
+  it(`'${[source[1], source[2], source[3]]}' 부분 반복`, function () {
+    expect(nodeArrayStringify(loopDetection(list))).to.be.eql(
+      nodeArrayStringify(expectList)
+    );
+  });
+});
 
 // describe("루프 탐색기", function () {
 //   const list = new LinkedList(source);
