@@ -16,6 +16,9 @@ describe("루프 탐색기", function () {
   it(`[Node 반환] '${source}' 반복 요소 없음`, function () {
     expect(loopNodeDetection(list)).to.be.undefined;
   });
+  it(`[Node 반환 - Runner] '${source}' 반복 요소 없음`, function () {
+    expect(runnerLoopNodeDetection(list)).to.be.undefined;
+  });
 });
 
 describe("루프 탐색기", function () {
@@ -37,6 +40,9 @@ describe("루프 탐색기", function () {
   it(`[Node 반환] '${source}' 전체 반복`, function () {
     expect(loopNodeDetection(list)).to.be.eql(expectList[0]);
   });
+  it(`[Node 반환 - Runner] '${source}' 전체 반복`, function () {
+    expect(runnerLoopNodeDetection(list)).to.be.eql(expectList[0]);
+  });
 });
 
 describe("루프 탐색기", function () {
@@ -50,6 +56,11 @@ describe("루프 탐색기", function () {
   });
   it(`[Node 반환] '${source[source.length - 1]}' tail 반복`, function () {
     expect(loopNodeDetection(list)).to.be.eql(expectList.tail);
+  });
+  it(`[Node 반환 - Runner] '${
+    source[source.length - 1]
+  }' tail 반복`, function () {
+    expect(runnerLoopNodeDetection(list)).to.be.eql(expectList.tail);
   });
 });
 
@@ -70,9 +81,11 @@ describe("루프 탐색기", function () {
       nodeArrayStringify(expectList, true)
     );
   });
-
   it(`[Node 반환] '${message}`, function () {
     expect(loopNodeDetection(list)).to.be.eql(expectList[0]);
+  });
+  it(`[Node 반환 - Runner] '${message}`, function () {
+    expect(runnerLoopNodeDetection(list)).to.be.eql(expectList[0]);
   });
 });
 
@@ -101,5 +114,8 @@ describe("루프 탐색기", function () {
   });
   it(`[Node 반환] '${message}`, function () {
     expect(loopNodeDetection(list)).to.be.eql(expectList[0]);
+  });
+  it(`[Node 반환 - Runner] '${message}`, function () {
+    expect(runnerLoopNodeDetection(list)).to.be.eql(expectList[0]);
   });
 });
