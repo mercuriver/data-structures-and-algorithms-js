@@ -1,5 +1,5 @@
-export { default as Node } from "./Node.js";
-export { default as LinkedList } from "./LinkedList.js";
+export { default as Node } from "../../../utils/Node.js";
+export { default as LinkedList } from "../../../utils/LinkedList.js";
 
 const nodeArrayStringify = (list, ignoreNext = false) =>
   list.map((row) => row.toString(ignoreNext));
