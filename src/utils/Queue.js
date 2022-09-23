@@ -1,20 +1,31 @@
+import LinkedList from "./LinkedList.js";
+
 class Queue {
   #list;
   constructor() {
-    this.#list = [];
+    this.#list = new LinkedList();
   }
 
-  enqueue(value) {}
+  enqueue(value) {
+    this.#list.append(value);
+  }
 
-  dequeue() {}
+  dequeue() {
+    return this.#list.shift();
+  }
 
-  peek() {}
+  peek() {
+    return this.#list.head ? this.#list.head.value : null;
+  }
 
-  poll() {}
+  isEmpty() {
+    console.log(this.#list.head);
+    return this.#list.head === null;
+  }
 
-  isEmpty() {}
-
-  toArray() {}
+  toArray() {
+    return this.#list.toArray();
+  }
 }
 
 export default Queue;
